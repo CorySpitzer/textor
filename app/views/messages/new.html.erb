@@ -1,0 +1,13 @@
+
+<% if @message.errors.any? %>
+  <% @message.errors.full_message.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= simple_form_for(@message) do |f| %>
+  <%= f.input :to %>
+  <%= f.input :from %>
+  <%= f.input :body %>
+  <%= f.button :submit, "Send Message" %>
+<% end %>

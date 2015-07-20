@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '>= 3.2'
 gem 'rest-client'
+gem 'simple_form'
 
 group :development do
   gem 'byebug'
@@ -23,6 +24,7 @@ group :test, :development do
   gem 'pry'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 group :test do
