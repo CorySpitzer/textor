@@ -26,7 +26,10 @@ private
                    To: to,
                    From: from }
       ).execute
-    rescue
+      # give acces to error in pry
+    rescue RestClient::BadRequest => error
+      error_message = JSON.parse(error.response)['message']
+      errors.add(:base, error_message)
       false
     end
   end

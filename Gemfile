@@ -22,11 +22,11 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  # gem 'pry-debugger'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
-end
-
-group :test do
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
