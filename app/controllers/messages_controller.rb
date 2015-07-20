@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @contacts = Contact.all
     @message = Message.new
+
+# binding.pry
+    @contact = Contact.find params[:format]
   end
 
   def create

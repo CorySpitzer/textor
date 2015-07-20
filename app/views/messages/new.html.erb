@@ -6,7 +6,7 @@
 <% end %>
 
 <%= simple_form_for(@message) do |f| %>
-  <%= f.input :to %>
+  <%= f.input :to, input_html: {value: @contact.cell_number} %>
   <%= f.input :from %>
   <%= f.input :body %>
   <%= f.button :submit, "Send Message" %>
