@@ -1,11 +1,10 @@
 <%= simple_form_for(@message) do |f| %>
-  <ul>
-    <% @contacts.each do |contact| %>
-      <li>
-        <%= link_to("Text " + contact.name, new_contact_message_path(contact.id)) %>
-        
-      </li>
-    <% end %>
-  </ul>
+  <%= f.input :to, collection: @contacts,
+                    as: :check_boxes,
+                    label_method: :name,
+                    value_method: :cell_number %>
+
+
+
   <%= f.submit %>
 <% end %>

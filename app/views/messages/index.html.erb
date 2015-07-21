@@ -6,6 +6,6 @@
 
 <ul>
   <% @messages.each do |message| %>
-    <li> <%= link_to message.body, message_path(message) %> </li>
+    <li> <%= message.body %> </li>
   <% end %>
 </ul>

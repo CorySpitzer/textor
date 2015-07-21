@@ -13,13 +13,26 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    if @message.save
-      flash[:notice] = "Your message was sent!"
+    if create_group_message(messages_params)
       redirect_to messages_path
     else
-      render 'new'
+      flash[:alert] = "Error: some messages were not sent."
+      redirect_to :back
     end
+
+  end
+
+  def create_group_message(messages_params)
+    is_valid_message = true
+    messages_params.each do |message_params|
+      message = make_message(message_params)
+      unless message.save
+        is_valid_message = false
+      # else
+      #   messages << message
+      end
+    end
+    is_valid_message
   end
 
   def show
@@ -28,8 +41,20 @@ class MessagesController < ApplicationController
 
 private
 
-  def message_params
-    params.require(:message).permit(:to, :from, :body)
+  def make_message(params)
+    Message.new(params)
+  end
+
+  def form_params
+    params.require(:message).permit({:to => []}, :from, :body)
+  end
+
+  def messages_params
+    form_params[:to].select { |cell_number| cell_number != "" }
+                    .map { |cell_number|
+                          { :to => cell_number,
+                            :from => form_params[:from],
+                            :body => form_params[:body] } }
   end
 
 end

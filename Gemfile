@@ -19,14 +19,17 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-  # gem 'pry-debugger'
+end
+
+group :test do
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'shoulda-matchers'
   gem 'vcr'
-  gem 'webmock'
+  gem 'mock'
+
 end

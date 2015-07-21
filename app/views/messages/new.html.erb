@@ -6,14 +6,11 @@
 <% end %>
 
 <%= simple_form_for(@message) do |f| %>
-  <% if @contact %>
-    <script charset="utf-8">
-      alert('if called');
-    </script>
-    <%= f.input :to, input_html: {value: @contact.cell_number} %>
-  <% else %>
-    <%= f.input :to %>
-  <% end %>
+  <%= f.input :to, collection: @contacts,
+                    as: :check_boxes,
+                    label_method: :name,
+                    value_method: :cell_number %>
+
   <%= f.input :from %>
   <%= f.input :body %>
   <%= f.button :submit, "Send Message" %>
