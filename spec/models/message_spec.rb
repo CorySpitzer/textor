@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Message, vcr: true do
-  # it { should validate_presence_of :to}
+  it { should have_and_belong_to_many :contacts}
   # it { should validate_presence_of :from}
   # it { should validate_presence_of :body}
 
@@ -15,4 +15,5 @@ describe Message, vcr: true do
     message.save
     expect(message.errors[:base]).to eq ["The 'To' number 1113334 is not a valid phone number."]
   end
+
 end

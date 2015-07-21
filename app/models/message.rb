@@ -2,15 +2,10 @@ class Message < ActiveRecord::Base
   # validates_presence_of :to
   # validates_presence_of :from
   # validates_presence_of :body
+  has_and_belongs_to_many :contacts
 
   before_create :send_message
 
-  # def initialize(attributes)
-  #   @to = attributes['to']
-  #   @from = attributes['from']
-  #   @body = attributes['body']
-  #   @status = attributes['status']
-  # end
 
 private
 
