@@ -7,9 +7,9 @@ class MessagesController < ApplicationController
   def new
     @contacts = Contact.all
     @message = Message.new
-
-# binding.pry
-    @contact = Contact.find params[:format]
+    if params[:contact_id]
+      @contact = Contact.find params[:contact_id]
+    end
   end
 
   def create
